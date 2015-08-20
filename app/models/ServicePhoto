@@ -1,0 +1,15 @@
+<?php
+
+class ServicePhoto extends Eloquent {
+
+    protected $fillable = array('epc', 'car_line_id', 'model', 'serial_number', 'color', 'km', 
+    	'notification_time', 'car_owner_id');
+
+    public function serviceOrder()
+    {
+    	return $this->belongsTo('ServiceOrder');
+    }
+
+}
+
+?>
