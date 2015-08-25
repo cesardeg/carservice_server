@@ -14,5 +14,10 @@ class CarOwner extends Eloquent {
     	return $this->belongsTo('Client');
     }
 
+    public function serviceOrders()
+    {
+        return $this->hasMany('ServiceOrder');
+    }
+
 }
 ?>

@@ -2,14 +2,13 @@
 
 class ServicePhoto extends Eloquent {
 
-    protected $fillable = array('epc', 'car_line_id', 'model', 'serial_number', 'color', 'km', 
-    	'notification_time', 'car_owner_id');
+    protected $fillable = array('service_order_id', 'type', 'photo');
+    protected $guarded = array('id'):
 
     public function serviceOrder()
     {
     	return $this->belongsTo('ServiceOrder');
     }
-
 }
 
 ?>

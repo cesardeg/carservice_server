@@ -19,6 +19,21 @@ class User extends Eloquent {
     	return $this->hasMany('OrderService', 'deliver_user');
     }
 
+    public function serviceOrders()
+    {
+        return $this->hasMany('ServiceOrder');
+    }
+
+    public function serviceDiagnostics()
+    {
+        return $this->hasMany('ServiceDiagnostic');
+    }
+
+    public function serviceDeliveries()
+    {
+        return $this->hasMany('ServiceDelivery');
+    }
+
 }
 
 ?>

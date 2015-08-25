@@ -9,6 +9,11 @@ class Car extends Eloquent {
     {
     	return $this->belongsTo('CarOwner');
     }
+
+    public function serviceOrders()
+    {
+    	return $this->hasMany('ServiceOrder');
+    }
 }
 
 ?>
