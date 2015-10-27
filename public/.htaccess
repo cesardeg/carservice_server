@@ -175,7 +175,7 @@
 	
 	# Add slash if there is no at the end
 	RewriteCond %{REQUEST_URI} !(/$|\.) 
-	RewriteRule (.*) %{REQUEST_URI}/ [R=301,L]
+	RewriteRule (.*) %{REQUEST_URI}/ [R=307,L]
 	
 	# Remove double slashes in all URLs
 	RewriteCond %{THE_REQUEST} ^[A-Z]+\ /(([^/\ ]+/)*)/+([^\ ]*)

@@ -3,11 +3,11 @@
 class ServiceQuoteItem extends Eloquent {
 
 	protected $fillable = array('description', 'amount', 'subtotal');
-	protected $guarded = array('id', 'service_order_id');
+	protected $guarded = array('id');
 	
-    public function serviceDiagnostic()
+    public function quote()
     {
-    	return $this->belongsTo('ServiceDiagnostic');
+    	return $this->belongsTo('ServiceQuote', 'service_quote_id');
     }
 
 }

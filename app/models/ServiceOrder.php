@@ -3,19 +3,22 @@
 class ServiceOrder extends Eloquent {
 
 
-    protected $fillable = array('service_name', 'pick_up_address', 'delivery_address', 'owner_supplied_parts', 'owner_allow_used_parts', 
-                                'km', 'fuel_level', 'brake_fluid', 'wiper_fluid', 'antifreeze', 'oil', 'power_steering_fluid');
-    protected $guarded = array('id', 'user_id', 'car_id', 'date', 'is_closed', 'owneer_agree', 'workshop_id', 'car_owner_id');
+    protected $fillable = array('service_name', 'pick_up_address', 'delivery_address', 'owner_supplied_parts', 'owner_allow_used_parts');
 
 
-	public function photos()
-	{
-		return $this->hasMany('ServicePhoto');
-	}
+    public function inventory()
+    {
+        return $this->hasOne('ServiceInventory');
+    }
 
-    public function serviceDiagnostic()
+    public function diagnostic()
     {
     	return $this->hasOne('ServiceDiagnostic');
+    }
+
+    public function quote()
+    {
+        return $this->hasOne('ServiceQuote');
     }
 
     public function car()
@@ -23,24 +26,19 @@ class ServiceOrder extends Eloquent {
     	return $this->belongsTo('Car');
     }
 
-    public function workshop()
-    {
-    	return $this->belongsTo('Workshop');
-    }
-
-    public function user()
-    {
-    	return $this->belongsTo('User');
-    }
-
     public function carOwner()
     {
         return $this->belongsTo('CarOwner');
     }
 
-    public function delivery()
+    public function user()
     {
-        return  $this->hasManyThrough('ServiceDelivery', 'ServiceDiagnostic');
+        return $this->belongsTo('User');
+    }
+
+    public function workshop()
+    {
+    	return $this->belongsTo('Workshop');
     }
 
 }

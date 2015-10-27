@@ -11,3 +11,5 @@
 |
 */
 
+Artisan::add(new RemindKmCapture);
+Artisan::add(new RemindScheduledServices);

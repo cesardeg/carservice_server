@@ -1,0 +1,51 @@
+scp -r . root@174.136.25.45:/home/admin/domains/hqhrfid.com/private_html/carservices/
+ssh root@174.136.25.45
+cd /home/admin/domains/hqhrfid.com/private_html/carservices/public/
+shopt -s dotglob nullglob
+mv * /home/admin/domains/hqhrfid.com/public_html/carservices/
+rm -r /home/admin/domains/hqhrfid.com/private_html/carservices/public/
+
+cd /
+wget http://download.redis.io/redis-stable.tar.gz
+tar xvzf redis-stable.tar.gz
+cd redis-stable
+make
+
+sudo cp src/redis-server /usr/local/bin/
+sudo cp src/redis-cli /usr/local/bin/
+
+redis-server &
+
+public/index.php
+require __DIR__.'/../../private_html/carservices/bootstrap/autoload.php';
+$app = require_once __DIR__.'/../../private_html/carservices/bootstrap/start.php';
+
+crontab -e
+* * * * * php /home/admin/domains/hqhrfid.com/private_html/carservices/artisan scheduled:run 1>> /dev/null 2>&1
+
+app/config/database.php
+
+'mysql' => array(
+			'driver'    => 'mysql',
+			'host'      => 'localhost',
+			'database'  => 'admin_carservices',
+			'username'  => 'admin_uno',
+			'password'  => '2014ivanhqh',
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+			'options'   => array(
+				PDO::MYSQL_ATTR_MAX_BUFFER_SIZE => 1024*1024*5),
+		),
+
+
+mysql
+mysqsl> SET GLOBAL max_allowed_packet=16777216;
+
+http://174.136.25.45:2222
+DirectAdmin-------> user:admin pwd:4pjJxYHk
+Terminal   -------> user:root pwd:%h{:C[/H%,0A#Dy
+
+http://174.136.25.45/phpmyadmin/
+user:admin_uno
+pwd:2014ivanhqh
